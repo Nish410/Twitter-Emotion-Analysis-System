@@ -1,0 +1,80 @@
+# DL-Project: Twitter Emotion Analysis System
+
+## Affective-DeBERTa: A Fine-Tuned Transformer Pipeline for Multi-Class Emotion Classification
+
+**Live Demo:** [ Twitter Emotion Analysis App](https://twitter-emotion-analysis-system-1441.streamlit.app/)  
+**Model Repository:** [ Hugging Face Weights](https://huggingface.co/Nish40/emotion-deberta-v3)
+
+---
+
+### Abstract
+This work presents a state-of-the-art Natural Language Processing (NLP) pipeline for the classification of emotional states in short-form social media text. Our methodology, **Affective-DeBERTa**, utilizes a Microsoft DeBERTa-v3 backbone for disentangled attention-based feature extraction. Unlike standard models, DeBERTa-v3 improves training efficiency by sharing embeddings across the encoder and decoder through an enhanced mask decoder. The system is fine-tuned to detect six primary emotional states: **Joy, Sadness, Anger, Fear, Love, and Surprise**. By integrating a **SentencePiece tokenizer** and a cloud-native deployment strategy involving **GitHub, Hugging Face, and Streamlit**, we achieve a high-performance interface capable of real-time affective computing.
+
+**Keywords:** Twitter Sentiment, Emotion Classification, DeBERTa-v3, Natural Language Processing, Transformer Models, Affective Computing.
+
+---
+
+### 1 Introduction
+Social media platforms like Twitter/X have become primary sources for understanding public sentiment. However, emotion classification remains challenging due to short text lengths, irregular grammar, and the high prevalence of sarcasm and slang. Traditional models often fail to capture the long-range contextual dependencies required to distinguish between nuanced emotions like "Surprise" and "Fear."
+
+This project implements a state-of-the-art Transformer-based pipeline that moves beyond traditional CNN/RNN approaches. The system is designed to be:
+* **Context-Aware:** Using Disentangled Attention to understand word relationships.
+* **Hybrid-Cloud Native:** Decoupling code (GitHub) from model weights (Hugging Face).
+* **Real-Time:** Providing sub-second inference via a Streamlit web interface.
+
+---
+
+### 2 Literature Survey
+This section summarizes recent research that informs our **Affective-DeBERTa** pipeline, focusing on the evolution from static embeddings to contextual Transformers in emotion detection.
+
+1.  **He et al. (2021):** Introduced DeBERTa, proving that **Disentangled Attention** significantly improves NLU tasks by representing words using separate vectors for content and relative position.
+2.  **Rezapour (2024):** Compared BERT and XLNet for emotion detection, finding that Transformers with self-attention mechanisms significantly alleviate the vanishing gradient issues found in older RNN/LSTM models.
+3.  **Wan et al. (2024):** Proposed that pre-trained models require specific fine-tuning on informal datasets to capture the unique "noise" of Twitter (hashtags, abbreviations, and informal syntax).
+4.  **Jambulkar et al. (2025):** Evaluated **DeBERTa-v3** for subjectivity detection, concluding that its architectural innovations allow it to capture syntactic nuances more effectively than RoBERTa or BERT-Base.
+5.  **Imran (2024):** Performed a comparative analysis of six transformers, showing that DeBERTa-v3 provides a superior accuracy-complexity trade-off for real-time web-based inference.
+6.  **Zhu (2025):** Applied DeBERTa-v3 to sentiment tasks, achieving F1-scores above 0.92, validating the model’s robustness in high-variance text environments.
+7.  **Wolf et al. (2020):** Established the Hugging Face `transformers` ecosystem, which our project utilizes to serve large model weights (Safetensors) without bloating the GitHub repository.
+8.  **Saravia et al. (2018):** Introduced the "Emotion" dataset used for many modern benchmarks, highlighting the difficulty of multi-class classification vs. binary sentiment analysis.
+9.  **Vaswani et al. (2017):** The seminal "Attention is All You Need" paper, which provided the foundational **Self-Attention** mechanism utilized in our DeBERTa backbone.
+10. **Khatavkar et al. (2025):** Demonstrated that Transformer derivatives are superior at handling multilingual and context-specific nuances in unstructured social media data.
+
+---
+
+### 3 Proposed Methodology: Affective-DeBERTa Pipeline
+The methodology involves a four-stage pipeline: Data Tokenization, Feature Extraction, Classification, and Cloud Deployment.
+
+#### 3.1 Overall Architecture
+The Affective-DeBERTa model architecture is described below:
+* **SentencePiece Tokenization:** Raw tweets are processed into sub-word tokens. This allows the model to understand "unknown" words or slang by breaking them into meaningful sub-units.
+* **DeBERTa-v3 Backbone:** For each token, the model calculates **Disentangled Attention**. It treats the content ($c_i$) and the relative position ($p_{i|j}$) as separate components:
+  $$A_{i,j} = \{c_i, p_{i|j}\} \times \{c_j, p_{j|i}\}^T$$
+  This allows the model to understand that the same word can have different emotional weights depending on its position in the sentence.
+* **Feature Fusion & Classification:** The output of the Transformer layers is pooled and fed into a Softmax classification head to produce probabilities for the 6 emotion classes.
+* **Hybrid Deployment:**
+    * **GitHub:** Hosts the Python application logic and UI code.
+    * **Hugging Face:** Hosts the 250MB `model.safetensors` weight file.
+    * **Streamlit Cloud:** Acts as the execution environment, pulling from both sources to provide a live URL.
+
+---
+
+### 4 Experimental Results and Analysis
+The model was evaluated on a held-out test set of Twitter data.
+
+#### 4.1 Quantitative Results
+| Model | Test Accuracy | Macro F1-score | Notes |
+| :--- | :--- | :--- | :--- |
+| Simple CNN Baseline | ≈ 0.62 | ≈ 0.60 | 3-layer CNN (sanity baseline). |
+| BERT-Base | 0.89 | 0.88 | Standard transformer benchmark. |
+| **Affective-DeBERTa (Ours)** | **0.9538** | **0.9537** | Fine-tuned DeBERTa-v3-base. |
+
+#### 4.2 Analysis
+Our Affective-DeBERTa pipeline achieves a competitive accuracy of **95.38%**. The high F1-score indicates that the model is robust across all six classes, including minority classes like "Surprise" and "Love," which are traditionally difficult to classify.
+
+---
+
+### 5 Conclusion
+The **Twitter Emotion Analysis System** demonstrates that fine-tuning specialized Transformers like DeBERTa-v3 is highly effective for affective computing. The modular design ensures that the model can be easily updated or retrained for other text-based classification tasks.
+
+---
+**Developed by:** Nisha  
+**Project:** DL-Project 
