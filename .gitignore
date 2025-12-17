@@ -1,0 +1,14 @@
+# Virtual Environment (Very heavy - 500MB+)
+.venv/
+venv/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+
+data/
+
+models/
+
+.DS_Store
