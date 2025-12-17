@@ -18,11 +18,11 @@ if 'tweet_text' not in st.session_state:
 # 2. Model Loading
 @st.cache_resource
 def load_model():
-    model_path = "./models/final_model"
+    model_path = "Nish40/emotion-deberta-v3"
     if not os.path.exists(model_path):
         return None, None
-    tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
-    model = AutoModelForSequenceClassification.from_pretrained(model_path)
+    tokenizer = AutoTokenizer.from_pretrained(model_path, subfolder="final_model", use_fast=False)
+    model = AutoModelForSequenceClassification.from_pretrained(model_path, subfolder="final_model")
     return tokenizer, model
 
 def clean_text(text):
