@@ -91,6 +91,24 @@ To evaluate the model's robustness across different emotional states, we analyze
 * **Conclusion of Results:** With a macro F1-score of **0.9537**, the proposed pipeline offers a highly competitive accuracy-complexity trade-off, making it suitable for real-time monitoring of social media sentiment.
 ---
 
+## 5 Conclusion and Future Work
+
+### 5.1 Conclusion
+This project successfully designed and deployed the **Affective-DeBERTa** pipeline for multi-class emotion classification on Twitter data. By leveraging the **DeBERTa-v3** architecture's disentangled attention mechanism, we achieved a significant performance boost over traditional CNN and BERT-base models, reaching a test accuracy of **95.38%**. 
+
+Our work demonstrates that:
+* **Transformers exceed local feature extractors:** The global attention mechanism is far more effective than local convolutions (CNNs) for capturing sentiment in short, informal text.
+* **Hybrid Deployment is Scalable:** Decoupling the model weights (Hugging Face) from the UI (Streamlit) allows for a professional, low-latency user experience.
+* **Accuracy-Complexity Trade-off:** We reached state-of-the-art results in only 6 training epochs, proving that DeBERTa-v3 is highly efficient for targeted fine-tuning.
+
+### 5.2 Future Work
+To further enhance the system, the following research directions are proposed:
+1. **Multimodal Fusion:** Integrating emoji embeddings directly into the tokenization process to capture visual emotional cues.
+2. **Sarcasm Detection Module:** Adding an auxiliary classification head specifically trained to detect sarcastic irony, which remains a challenge for current transformers.
+3. **Temporal Analysis:** Expanding the pipeline to track emotional shifts over time (e.g., monitoring public mood during a major event).
+4. **Knowledge Distillation:** Compressing the DeBERTa-v3-base model into a "Tiny" version for faster mobile-edge deployment without losing significant accuracy.
+
+---
 ### 6 References
 [1] **He, P., Liu, X., Gao, J., & Chen, W. (2021).** "DeBERTa: Decoding-enhanced BERT with Disentangled Attention." *Proceedings of the International Conference on Learning Representations (ICLR 2021).* [Link](https://arxiv.org/abs/2006.03654)
 
