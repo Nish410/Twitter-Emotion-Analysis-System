@@ -18,13 +18,14 @@ if 'tweet_text' not in st.session_state:
 # 2. Model Loading
 @st.cache_resource
 def load_model():
-    model_path = "Nish40/emotion-deberta-v3"
-    if not os.path.exists(model_path):
-        return None, None
+   
+    model_path = "Nish40/emotion-deberta-v3" 
+    
+    # 2. Add 'subfolder="final_model"' because that is where your files are on HF
     tokenizer = AutoTokenizer.from_pretrained(model_path, subfolder="final_model", use_fast=False)
     model = AutoModelForSequenceClassification.from_pretrained(model_path, subfolder="final_model")
+    
     return tokenizer, model
-
 def clean_text(text):
     text = text.lower()
     text = re.sub(r'http\S+|www\S+|https\S+', '', text, flags=re.MULTILINE)
