@@ -76,5 +76,29 @@ Our Affective-DeBERTa pipeline achieves a competitive accuracy of **95.38%**. Th
 The **Twitter Emotion Analysis System** demonstrates that fine-tuning specialized Transformers like DeBERTa-v3 is highly effective for affective computing. The modular design ensures that the model can be easily updated or retrained for other text-based classification tasks.
 
 ---
+
+### 6 References
+[1] **He, P., Liu, X., Gao, J., & Chen, W. (2021).** "DeBERTa: Decoding-enhanced BERT with Disentangled Attention." *Proceedings of the International Conference on Learning Representations (ICLR 2021).* [Link](https://arxiv.org/abs/2006.03654)
+
+[2] **Rezapour, M. (2024).** "Emotion Detection with Transformers: A Comparative Study." *arXiv preprint arXiv:2403.15454.* (A study on BERT, XLNet, and RoBERTa for the Emotion dataset).
+
+[3] **Wan, B., Wu, P., Yeo, C. K., & Li, G. (2024).** "Emotion-cognitive reasoning integrated BERT for sentiment analysis of online public opinions on emergencies." *Information Processing & Management*, 61(2), 103609.
+
+[4] **Jambulkar, A. et al. (2025).** "QU-NLP at CheckThat! 2025: Multilingual Subjectivity in News Articles Detection using DeBERTa-V3." *CLEF 2025 Working Notes.* [Link](https://arxiv.org/abs/2507.21095)
+
+[5] **Khatavkar, V., Velankar, M., & Petkar, S. (2025).** "Multilingual Transformer Contextual Embedding Model for Political Tweets Analysis." *Cureus Journal of Computer Science.*
+
+[6] **Zhu, V. & Silva, N. (2025).** "DESS: DeBERTa Enhanced Syntactic-Semantic Aspect Sentiment Triplet Extraction." *Proceedings of the 11th Italian Conference on Computational Linguistics (CLiC-it 2025).*
+
+[7] **Wolf, T., et al. (2020).** "Transformers: State-of-the-Art Natural Language Processing." *Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP).*
+
+[8] **Saravia, S., et al. (2018).** "CARER: Contextualized Affect Representations for Emotion Recognition." *Proceedings of the 2018 Conference on Empirical Methods in Natural Language Processing.* (The original 'Emotion' dataset source).
+
+[9] **Vaswani, A., et al. (2017).** "Attention Is All You Need." *Advances in Neural Information Processing Systems (NeurIPS).* (Foundational paper for the Transformer architecture).
+
+[10] **Imran, M. (2024).** "Exploring Transformers in Emotion Recognition: A comparison of BERT, DistilBERT, RoBERTa, XLNet and ELECTRA." *ResearchGate Technical Report.*
+
+---
+
 **Developed by:** Nisha  
 **Project:** DL-Project 
